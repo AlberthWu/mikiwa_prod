@@ -10,7 +10,9 @@ type CompanyController struct {
 }
 
 func (c *CompanyController) Post() {
-	fmt.Println("tes")
+	data := fmt.Sprintln("test")
+	c.Data["json"] = data
+	c.ServeJSON()
 
 }
 
@@ -27,6 +29,7 @@ func (c *CompanyController) GetOne() {
 }
 
 func (c *CompanyController) GetAll() {
-	fmt.Println("get")
-
+	data := fmt.Sprintln("get All")
+	c.Data["json"] = data
+	c.ServeJSON()
 }
