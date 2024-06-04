@@ -7,13 +7,14 @@
 // @LicenseUrl http://www.apache.org/licenses/LICENSE-2.0.html
 package routers
 
-func init() {
+import (
+	master "mikiwa_prod/controllers/master"
 
-	// product
-	// division
-	// beego.Router("/v1/product/division", &master.ProductDivisionController{}, "post:Post;get:GetAll")
-	// beego.Router("/v1/product/division/:id", &master.ProductDivisionController{}, "put:Put;get:GetOne")
-	// beego.Router("/v1/product/division/list", &master.ProductDivisionController{}, "get:GetAllList")
-	// type
+	beego "github.com/beego/beego/v2/server/web"
+)
+
+func init() {
+	//company
+	beego.Router("/v1/company", &master.CompanyController{}, "get:GetAll;post:Post")
 
 }
