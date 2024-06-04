@@ -71,6 +71,14 @@ func (t *Company) TableName() string {
 	return "companies"
 }
 
+func (t *Plant) TableName() string {
+	return "plants"
+}
+
+func Plants() orm.QuerySeter {
+	return orm.NewOrm().QueryTable(new(Plant))
+}
+
 func Companies() orm.QuerySeter {
 	return orm.NewOrm().QueryTable(new(Company))
 }
@@ -88,7 +96,24 @@ func (t *Company) Insert(m Company) (*Company, error) {
 	return &m, nil
 }
 
+func (t *Plant) Insert(m Plant) (*Plant, error) {
+	o := orm.NewOrm()
+
+	if _, err := o.Insert(&m); err != nil {
+		return nil, err
+	}
+	return &m, nil
+}
+
 func (t *Company) Update(fields ...string) error {
+	o := orm.NewOrm()
+	if _, err := o.Update(t, fields...); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (t *Plant) Update(fields ...string) error {
 	o := orm.NewOrm()
 	if _, err := o.Update(t, fields...); err != nil {
 		return err
