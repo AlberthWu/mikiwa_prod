@@ -6,11 +6,10 @@ import (
 )
 
 type CompanyController struct {
-	base.BaseControllers
+	base.BaseController
 }
 
 func (c *CompanyController) Post() {
-	fmt.Println("tes")
 
 }
 
@@ -27,6 +26,7 @@ func (c *CompanyController) GetOne() {
 }
 
 func (c *CompanyController) GetAll() {
-	fmt.Println("get")
-
+	data := fmt.Sprintln("get All")
+	c.Data["json"] = data
+	c.ServeJSON()
 }
